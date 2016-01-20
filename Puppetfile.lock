@@ -44,6 +44,11 @@ GITHUBTARBALL
     hub (1.4.1)
 
 GITHUBTARBALL
+  remote: boxen/puppet-iterm2
+  specs:
+    iterm2 (1.2.5)
+
+GITHUBTARBALL
   remote: boxen/puppet-nginx
   specs:
     nginx (1.6.0)
@@ -51,7 +56,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: boxen/puppet-nodejs
   specs:
-    nodejs (5.0.0)
+    nodejs (5.0.5)
 
 GITHUBTARBALL
   remote: boxen/puppet-openssl
@@ -114,9 +119,10 @@ DEPENDENCIES
   homebrew (= 1.13.0)
   hub (= 1.4.1)
   inifile (= 1.4.1)
+  iterm2 (= 1.2.5)
   module_data (= 0.0.4)
   nginx (= 1.6.0)
-  nodejs (= 5.0.0)
+  nodejs (= 5.0.5)
   openssl (= 1.0.0)
   phantomjs (= 3.0.0)
   pkgconfig (= 1.0.0)
