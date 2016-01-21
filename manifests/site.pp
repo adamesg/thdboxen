@@ -119,48 +119,52 @@ class slack (
   }
  
 
-include brewcask
-package { 'java': provider => 'brewcask' } 
-
-  package { 'CiscoAnyConnect':
-    source => '/Users/comdev/Desktop/corpdeploy/Install and-or add to Dock/anyconnect-macosx-i386-3.1.12020-k9-2.dmg',
-    provider => pkgdmg,
-  }
-
-  package {'SEP' :
-    source => '/Users/comdev/Desktop/corpdeploy/SEP 12.1 R6 MP2/SEP 12.1 R6 MP2 Application Installer/Additional Resources/SEP.mpkg',
-    provider => apple,
-  }
-
-  package { 'Outlook':
-    source => '/Users/comdev/Desktop/Microsoft_Office_2016_Volume_Installer.pkg',
-    provider => apple,
-  }
-
-  package { 'AirWatch':
-    source => '/Users/comdev/Downloads/AirWatchAgent.dmg',
-    provider => pkgdmg,
-  }
-
-  file { 'HD-Firewall':
-    source => '/Users/comdev/Desktop/corpdeploy/Install and-or add to Dock/HD-Firewall.term',
-    path => '/Applications/HD-Firewall.term',
-  }
-
-
-
-#  class associate-user {
-#    include 'stdlib'
-#    $pass = str2saltedsha512('password')
-#    puts $pass
-#    user { 'testuser':
-#       ensure  => 'present',
-#       comment => 'TestUser,,,',
-#       groups  => ['staff', 'everyone'],
-#       home    => '/Users/testuser',
-#       shell   => '/bin/bash',
-#       password => $pass,
-#     }
+#include brewcask
+#package { 'java': provider => 'brewcask' } 
+#
+#  package { 'CiscoAnyConnect':
+#    source => '/Users/comdev/Desktop/corpdeploy/Install and-or add to Dock/anyconnect-macosx-i386-3.1.12020-k9-2.dmg',
+#    provider => pkgdmg,
 #  }
 #
-#  include associate-user
+#  package {'SEP' :
+#    source => '/Users/comdev/Desktop/corpdeploy/SEP 12.1 R6 MP2/SEP 12.1 R6 MP2 Application Installer/Additional Resources/SEP.mpkg',
+#    provider => apple,
+#  }
+#
+#  package { 'Outlook':
+#    source => '/Users/comdev/Desktop/Microsoft_Office_2016_Volume_Installer.pkg',
+#    provider => apple,
+#  }
+#
+#  package { 'AirWatch':
+#    source => '/Users/comdev/Downloads/AirWatchAgent.dmg',
+#    provider => pkgdmg,
+#  }
+#
+#  file { 'HD-Firewall':
+#    source => '/Users/comdev/Desktop/corpdeploy/Install and-or add to Dock/HD-Firewall.term',
+#    path => '/Applications/HD-Firewall.term',
+#  }
+
+
+
+  class associate-user {
+    user { 'testuser':
+       ensure  => 'present',
+       comment => 'TestUser',
+       #groups  => 'staff',
+       home    => '/Users/testuser/',
+       shell   => '/bin/bash',
+       iterations => '47169',
+       password   => '92cf23f437de506de1fd11ec1088f7f7ebb94c1a4f3937581fc9095c37ac059c7bffd5cdb216dbd6cb5ee8c78d1f20e23d4e131db12d98b468ed40a86f782d625b33296b5b1e2098e05d2cb5bb4ac5e71883dc8f687b5040eaf82178d175fd313f8301823150cba34dd613acdd334655d26848807b57dba413941cae4220bab7',
+       salt       => 'd2d2321fff5ef4bd6571605052329ee21d3f75197f8ed7b956b50ff1a9b1b853',
+       name => 'testUser',
+       gid => '20',
+     }
+  }
+
+  include associate-user
+
+#include virtualbox
+#include vagrant

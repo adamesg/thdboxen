@@ -68,5 +68,4 @@ github "xquartz",     "1.2.1"
 
 github "iterm2",      "1.2.5"
 #github "virtualbox",      "1.0.13"
-#github "vagrant",         "3.3.1"
-#github "slack",       "1.1.10", :repo => "thisisandrew/puppet-slack"
+#github "vagrant",         "3.3.4"
