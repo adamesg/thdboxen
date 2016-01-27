@@ -89,82 +89,197 @@ node default {
   }
 }
 
-  ## Install CloudFoundry
-  ## brew tap pivotal/tap
-  homebrew::tap { 'pivotal/tap': }
-  
-  ## brew install cloudfoundry-cli
-  package { "pivotal/tap/cloudfoundry-cli":
-    ensure => present,
-    require => Homebrew::Tap['pivotal/tap'],
-  } ## -> installs `cloudfoundry-cli` to `/opt/boxen/homebrew/Cellar/cloudfoundry-cli/`
-
- include iterm2::stable 
- include slack
-
-class slack (
-  $version = '1.1.10'
-) {
-  # Application in a .zip
-  package { 'Slack':
-    ensure   => present,
-    source   => "https://slack-ssb-updates.global.ssl.fastly.net/mac_public_releases/slack-${version}.zip",
-    provider => compressed_app
-  }
-}
-
-  package { "IntelliJ-IDEA-IU-15.0.3":
-    provider => 'appdmg_eula',
-    source   => "http://download.jetbrains.com/idea/ideaIU-15.0.3.dmg",
-  }
- 
-
-#include brewcask
-#package { 'java': provider => 'brewcask' } 
-#
-#  package { 'CiscoAnyConnect':
-#    source => '/Users/comdev/Desktop/corpdeploy/Install and-or add to Dock/anyconnect-macosx-i386-3.1.12020-k9-2.dmg',
-#    provider => pkgdmg,
+#  class associate-user {
+#    user { 'testuser':
+#       ensure  => 'present',
+#       comment => 'TestUser',
+#       #groups  => 'staff',
+#       home    => '/Users/testuser/',
+#       shell   => '/bin/bash',
+#       iterations => '47169',
+#       password   => '92cf23f437de506de1fd11ec1088f7f7ebb94c1a4f3937581fc9095c37ac059c7bffd5cdb216dbd6cb5ee8c78d1f20e23d4e131db12d98b468ed40a86f782d625b33296b5b1e2098e05d2cb5bb4ac5e71883dc8f687b5040eaf82178d175fd313f8301823150cba34dd613acdd334655d26848807b57dba413941cae4220bab7',
+#       salt       => 'd2d2321fff5ef4bd6571605052329ee21d3f75197f8ed7b956b50ff1a9b1b853',
+#       name => 'testUser',
+#       gid => '20',
+#     }
 #  }
 #
-#  package {'SEP' :
-#    source => '/Users/comdev/Desktop/corpdeploy/SEP 12.1 R6 MP2/SEP 12.1 R6 MP2 Application Installer/Additional Resources/SEP.mpkg',
-#    provider => apple,
-#  }
-#
-#  package { 'Outlook':
-#    source => '/Users/comdev/Desktop/Microsoft_Office_2016_Volume_Installer.pkg',
-#    provider => apple,
-#  }
-#
-#  package { 'AirWatch':
-#    source => '/Users/comdev/Downloads/AirWatchAgent.dmg',
-#    provider => pkgdmg,
-#  }
-#
-#  file { 'HD-Firewall':
-#    source => '/Users/comdev/Desktop/corpdeploy/Install and-or add to Dock/HD-Firewall.term',
-#    path => '/Applications/HD-Firewall.term',
-#  }
+#  include associate-user
 
-
-
-  class associate-user {
-    user { 'testuser':
-       ensure  => 'present',
-       comment => 'TestUser',
-       #groups  => 'staff',
-       home    => '/Users/testuser/',
-       shell   => '/bin/bash',
-       iterations => '47169',
-       password   => '92cf23f437de506de1fd11ec1088f7f7ebb94c1a4f3937581fc9095c37ac059c7bffd5cdb216dbd6cb5ee8c78d1f20e23d4e131db12d98b468ed40a86f782d625b33296b5b1e2098e05d2cb5bb4ac5e71883dc8f687b5040eaf82178d175fd313f8301823150cba34dd613acdd334655d26848807b57dba413941cae4220bab7',
-       salt       => 'd2d2321fff5ef4bd6571605052329ee21d3f75197f8ed7b956b50ff1a9b1b853',
-       name => 'testUser',
-       gid => '20',
-     }
+###### DMGs
+  package { 'AndroidStudio' :
+    source => '/Volumes/DEPS/android-studio-ide-141.2456560-mac.dmg',
+    provider => appdmg,
   }
 
-  include associate-user
+  package { 'Balsamiq' :
+    source => '/Volumes/DEPS/Balsamiq_Mockups_3.3.6.dmg',
+    provider => appdmg,
+  }
 
-#include virtualbox
-#include vagrant
+  package { 'CiscoAnyConnect' :
+    source => '/Volumes/DEPS/anyconnect-macosx-i386-3.1.12020-k9-2.dmg',
+    provider => appdmg,
+  }
+
+  package { 'DBVisualizer' :
+    source => '/Volumes/DEPS/dbvis_macos_9_2_14_jre.dmg',
+    provider => appdmg,
+  }
+
+  package { 'Firefox' :
+    source => '/Volumes/DEPS/Firefox\ 44.0.dmg',
+    provider => appdmg,
+  }
+
+  package { 'GoogleChrome' :
+    source => '/Volumes/DEPS/googlechrome.dmg',
+    provider => appdmg,
+  }
+
+  package { 'IntelliJ IDEA' :
+    source => '/Volumes/DEPS/ideaIU-15.0.3.dmg',
+    provider => appdmg,
+  }
+
+  package { 'Java8' :
+    source => '/Volumes/DEPS/jdk-8u71-macosx-x64.dmg',
+    provider => appdmg,
+  }
+
+  package { 'Lync' :
+    source => '/Volumes/DEPS/Lync_14.2.1_150923.dmg',
+    provider => appdmg,
+  }
+
+  package { 'OmniGraffle' :
+    source => '/Volumes/DEPS/OmniGraffle-6.4.1.dmg',
+    provider => appdmg,
+  }
+
+  package { 'RubyMine' :
+    source => '/Volumes/DEPS/RubyMine-8.0.3-custom-jdk-bundled.dmg',
+    provider => appdmg,
+  }
+
+  package { 'SourceTree' :
+    source => '/Volumes/DEPS/SourceTree_2.1.dmg',
+    provider => appdmg,
+  }
+
+  package { 'THDEclipse' :
+    source => '/Volumes/DEPS/THDEclipse_4.4.dmg',
+    provider => appdmg,
+  }
+
+  package { 'Vagrant' :
+    source => '/Volumes/DEPS/vagrant_1.8.1.dmg',
+    provider => appdmg,
+  }
+
+  package { 'Webstorm' :
+    source => '/Volumes/DEPS/WebStorm-11.0.3-custom-jdk-bundled.dmg',
+    provider => appdmg,
+  }
+
+#### PKGS
+
+  package { 'AirWatch':
+    source => '/Volumes/DEPS/Install\ AirWatch\ MDM\ Agent.pkg',
+    provider => apple,
+  }
+
+  package { 'PCF CLI':
+    source => '/Volumes/DEPS/cf-cli-installer_6.15.0_osx.pkg',
+    provider => apple,
+  }
+
+  package { 'go':
+    source => '/Volumes/DEPS/go1.5.3.darwin-amd64.pkg',
+    provider => apple,
+  }
+
+  package { 'MSOffice':
+    source => '/Volumes/DEPS/Microsoft_Office_2016_Volume_Installer.pkg',
+    provider => apple,
+  }
+
+  package { 'Node':
+    source => '/Volumes/DEPS/node-v4.2.6.pkg',
+    provider => apple,
+  }
+
+  package { 'VirtualBox' :
+    source => '/Volumes/DEPS/VirtualBox.pkg',
+    provider => appdmg,
+  }
+
+### .apps
+
+  exec { 'Alfred2' :
+    command => "sudo mv /Users/comdev/Desktop/build-box/expanded/Alfred\ 2.app /Applications",
+    path => $path,
+  }
+
+  exec { 'Atom' :
+    command => "sudo mv /Users/comdev/Desktop/build-box/expanded/Atom.app /Applications",
+    path => $path,
+  }
+
+  exec { 'BeyondCompare' :
+    command => "sudo mv /Users/comdev/Desktop/build-box/expanded/Beyond\ Compare.app /Applications",
+    path => $path,
+  }
+
+  exec { 'Cyberduck' :
+    command => "sudo mv /Users/comdev/Desktop/build-box/expanded/Cyberduck.app /Applications",
+    path => $path,
+  }
+
+  exec { 'GitX' :
+    command => "sudo mv /Users/comdev/Desktop/build-box/expanded/GitX.app /Applications",
+    path => $path,
+  }
+
+  exec { 'iTerm2' :
+    command => "sudo mv /Users/comdev/Desktop/build-box/expanded/iTerm.app /Applications",
+    path => $path,
+  }
+
+  exec { 'Sketch' :
+    command => "sudo mv /Users/comdev/Desktop/build-box/expanded/Sketch.app /Applications",
+    path => $path,
+  }
+
+  exec { 'Slack' :
+    command => "sudo mv /Users/comdev/Desktop/build-box/expanded/Slack.app /Applications",
+    path => $path,
+  }
+
+### Scripts/Commands
+  exec { 'IDEPrefs' :
+    command => 'sudo cp -r /Volumes/DEPS/pivotal_ide_prefs-master /opt; cd /opt/pivotal_ide_prefs-master/cli; ./bin/ide_prefs --ide=intellij install; ./bin/ide_prefs --ide=rubymine install',
+    path => $path,
+  }
+
+  exec { 'Node-Inspector' :
+    command => 'npm install /Volumes/DEPS/node-inspector-master',
+    path => $path,
+  }
+
+  exec { 'Redis-CLI' :
+    command => 'sudo cp /Volumes/DEPS/redis-cli /usr/local/bin; sudo chmod 755 /usr/local/bin/redis-cli',
+    path => $path,
+  }
+
+### Local Gems
+  exec { 'Git-Pair' :
+    command => 'sudo gem install Volumes/DEPS/git-pair-0.1.0.gem',
+    path = $path,
+  }
+
+### Files
+  file { 'HD-Firewall':
+    source => '/Volumes/DEPS/HD-Firewall.term',
+    path => '/Applications/HD-Firewall.term',
+  }
