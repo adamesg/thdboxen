@@ -128,7 +128,7 @@ node default {
   }
 
   package { 'Firefox' :
-    source => '/Volumes/DEPS/Firefox\ 44.0.dmg',
+    source => '/Volumes/DEPS/Firefox 44.0.dmg',
     provider => appdmg,
   }
 
@@ -152,10 +152,10 @@ node default {
     provider => appdmg,
   }
 
-  package { 'OmniGraffle' :
-    source => '/Volumes/DEPS/OmniGraffle-6.4.1.dmg',
-    provider => appdmg,
-  }
+#  package { 'OmniGraffle' :
+#    source => '/Volumes/DEPS/OmniGraffle-6.4.1.dmg',
+#    provider => appdmg,
+#  }
 
   package { 'RubyMine' :
     source => '/Volumes/DEPS/RubyMine-8.0.3-custom-jdk-bundled.dmg',
@@ -185,7 +185,7 @@ node default {
 #### PKGS
 
   package { 'AirWatch':
-    source => '/Volumes/DEPS/Install\ AirWatch\ MDM\ Agent.pkg',
+    source => '/Volumes/DEPS/Install AirWatch MDM Agent.pkg',
     provider => apple,
   }
 
@@ -211,48 +211,48 @@ node default {
 
   package { 'VirtualBox' :
     source => '/Volumes/DEPS/VirtualBox.pkg',
-    provider => appdmg,
+    provider => apple,
   }
 
 ### .apps
 
   exec { 'Alfred2' :
-    command => "sudo mv /Users/comdev/Desktop/build-box/expanded/Alfred\ 2.app /Applications",
+    command => 'sudo cp -r  /Volumes/DEPS/Alfred\ 2.app /Applications',
     path => $path,
   }
 
   exec { 'Atom' :
-    command => "sudo mv /Users/comdev/Desktop/build-box/expanded/Atom.app /Applications",
+    command => 'sudo cp -r  /Volumes/DEPS/Atom.app /Applications',
     path => $path,
   }
 
   exec { 'BeyondCompare' :
-    command => "sudo mv /Users/comdev/Desktop/build-box/expanded/Beyond\ Compare.app /Applications",
+    command => 'sudo cp -r  /Volumes/DEPS/Beyond\ Compare.app /Applications',
     path => $path,
   }
 
   exec { 'Cyberduck' :
-    command => "sudo mv /Users/comdev/Desktop/build-box/expanded/Cyberduck.app /Applications",
+    command => 'sudo cp -r  /Volumes/DEPS/Cyberduck.app /Applications',
     path => $path,
   }
 
   exec { 'GitX' :
-    command => "sudo mv /Users/comdev/Desktop/build-box/expanded/GitX.app /Applications",
+    command => 'sudo cp -r  /Volumes/DEPS/GitX.app /Applications',
     path => $path,
   }
 
   exec { 'iTerm2' :
-    command => "sudo mv /Users/comdev/Desktop/build-box/expanded/iTerm.app /Applications",
+    command => 'sudo cp -r  /Volumes/DEPS/iTerm.app /Applications',
     path => $path,
   }
 
   exec { 'Sketch' :
-    command => "sudo mv /Users/comdev/Desktop/build-box/expanded/Sketch.app /Applications",
+    command => 'sudo cp -r  /Volumes/DEPS/Sketch.app /Applications',
     path => $path,
   }
 
   exec { 'Slack' :
-    command => "sudo mv /Users/comdev/Desktop/build-box/expanded/Slack.app /Applications",
+    command => 'sudo cp -r  /Volumes/DEPS/Slack.app /Applications',
     path => $path,
   }
 
@@ -274,8 +274,8 @@ node default {
 
 ### Local Gems
   exec { 'Git-Pair' :
-    command => 'sudo gem install Volumes/DEPS/git-pair-0.1.0.gem',
-    path = $path,
+    command => 'sudo gem install /Volumes/DEPS/git-pair-0.1.0.gem',
+    path => $path,
   }
 
 ### Files
