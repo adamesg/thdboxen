@@ -148,11 +148,6 @@ node default {
     provider => appdmg,
   }
 
-  package { 'Lync' :
-    source => '/Volumes/DEPS/Lync_14.2.1_150923.dmg',
-    provider => appdmg,
-  }
-
 #  package { 'OmniGraffle' :
 #    source => '/Volumes/DEPS/OmniGraffle-6.4.1.dmg',
 #    provider => appdmg,
@@ -200,6 +195,11 @@ node default {
     provider => apple,
   }
 
+  package { 'Lync' :
+    source => '/Volumes/DEPS/lync.pkg',
+    provider => apple,
+  }
+
   package { 'Node':
     source => '/Volumes/DEPS/node-v4.2.6.pkg',
     provider => apple,
@@ -213,6 +213,11 @@ node default {
 
   package { 'VirtualBox' :
     source => '/Volumes/DEPS/VirtualBox.pkg',
+    provider => apple,
+  }
+
+  package { 'THDEclipse' :
+    source => '/Volumes/DEPS/THDEclipse_4.4.pkg',
     provider => apple,
   }
 
