@@ -140,6 +140,7 @@ node default {
   package { 'IntelliJ IDEA' :
     source => '/Volumes/DEPS/ideaIU-15.0.3.dmg',
     provider => appdmg,
+    before => Package['Java8'],
   }
 
   package { 'Java8' :
@@ -164,11 +165,6 @@ node default {
 
   package { 'SourceTree' :
     source => '/Volumes/DEPS/SourceTree_2.1.dmg',
-    provider => appdmg,
-  }
-
-  package { 'THDEclipse' :
-    source => '/Volumes/DEPS/THDEclipse_4.4.dmg',
     provider => appdmg,
   }
 
@@ -207,6 +203,12 @@ node default {
   package { 'Node':
     source => '/Volumes/DEPS/node-v4.2.6.pkg',
     provider => apple,
+  }
+
+  package { 'THDEclipse' :
+    source => '/Volumes/DEPS/THDEclipse_4.4.pkg',
+    provider => apple,
+    before => Package['Java8'],
   }
 
   package { 'VirtualBox' :
@@ -260,6 +262,7 @@ node default {
   exec { 'IDEPrefs' :
     command => 'sudo cp -r /Volumes/DEPS/pivotal_ide_prefs-master /opt; cd /opt/pivotal_ide_prefs-master/cli; ./bin/ide_prefs --ide=intellij install; ./bin/ide_prefs --ide=rubymine install',
     path => $path,
+    require => Package['IntelliJ IDEA'],
   }
 
   exec { 'Node-Inspector' :
