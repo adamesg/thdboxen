@@ -216,11 +216,6 @@ node default {
     provider => apple,
   }
 
-  package { 'THDEclipse' :
-    source => '/Volumes/DEPS/THDEclipse_4.4.pkg',
-    provider => apple,
-  }
-
 ### .apps
 
   exec { 'Alfred2' :
@@ -273,6 +268,19 @@ node default {
   exec { 'Node-Inspector' :
     command => 'npm install /Volumes/DEPS/node-inspector-master',
     path => $path,
+    require => Package['Node'],
+  }
+
+  exec { 'Gulp' :
+    command => 'npm install /Volumes/DEPS/gulp-master',
+    path => $path,
+    require => Package['Node'],
+  }
+
+  exec { 'Grunt' :
+    command => 'npm install /Volumes/DEPS/grunt-master',
+    path => $path,
+    require => Package['Node'],
   }
 
   exec { 'Redis-CLI' :
