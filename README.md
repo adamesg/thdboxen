@@ -85,6 +85,7 @@ cd /opt/boxen/repo
 
 That's enough to get your boxen into a usable state on other machines,
 usually.
+
 From there, we recommend setting up
 [boxen-web](https://github.com/boxen/boxen-web)
 as an easy way to automate letting other folks install your boxen.
